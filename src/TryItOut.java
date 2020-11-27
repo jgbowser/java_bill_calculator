@@ -18,5 +18,11 @@ public class TryItOut {
 
         //print a variable
         System.out.println(cupsOfCoffeeFriday);
+
+        //long vs int and some considerations
+        //The L at the end of the large numbers allows the literal to be a long instead of an int
+        long jeffBezosIncome = 116900000000L;
+        long billGatesIncome = 99900000000L;
+        long myIncome = 100;
     }
 }
