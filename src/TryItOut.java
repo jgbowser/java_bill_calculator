@@ -24,5 +24,19 @@ public class TryItOut {
         long jeffBezosIncome = 116900000000L;
         long billGatesIncome = 99900000000L;
         long myIncome = 100;
+
+        long unitedStatesGDP = 50540000000000L;
+        long chinaGDP = 13610000000000L;
+
+        //Real Numbers - Floats and Doubles
+
+        double a = 0.2;
+        double b = 0.4;
+        double c = a * b;
+        // Expecting c=0.08, but we get 0.0800000...2 due to rounding errors with floating point numbers
+        System.out.println(c);
+
+        //Just like longs, the default is double so to make a float add "F" after the literal
+        float temperature = 58.4F;
     }
 }
