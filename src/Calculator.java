@@ -1,6 +1,6 @@
 public class Calculator {
     public static void main(String[] args) {
-        System.out.println("The bill calculator");
+        System.out.println("The Bill Calculator");
         int numberOfPersons = 4;
 
         double taxPercent = 8;
@@ -53,44 +53,48 @@ public class Calculator {
         boolean serviceWasGood = true;
         boolean splitBillEvenly = true;
 
-        double personOneSubTotal = personOneAppetizerCost + personOneMainCost + personOneDessertCost + personOneDrinkCost;
-        double personTwoSubTotal = personTwoAppetizerCost + personTwoMainCost + personTwoDessertCost + personTwoDrinkCost;
-        double personThreeSubTotal = personThreeAppetizerCost + personThreeMainCost + personThreeDessertCost + personThreeDrinkCost;
-        double personFourSubTotal = personFourAppetizerCost + personFourMainCost + personFourDessertCost + personFourDrinkCost;
+        double personOneSubTotal = personOneAppetizerCost + personOneMainCost
+                + personOneDessertCost + personOneDrinkCost;
+        double personTwoSubTotal = personTwoAppetizerCost + personTwoMainCost
+                + personTwoDessertCost + personTwoDrinkCost;
+        double personThreeSubTotal = personThreeAppetizerCost + personThreeMainCost
+                + personThreeDessertCost + personThreeDrinkCost;
+        double personFourSubTotal = personFourAppetizerCost + personFourMainCost
+                + personFourDessertCost + personFourDrinkCost;
 
-        double personOneTaxAmount = ( taxPercent / 100 ) * personOneSubTotal;
-        double personTwoTaxAmount = ( taxPercent / 100 ) * personTwoSubTotal;
-        double personThreeTaxAmount = ( taxPercent / 100 ) * personThreeSubTotal;
-        double personFourTaxAmount = ( taxPercent / 100 ) * personFourSubTotal;
+        double taxAmount = taxPercent / 100;
+        double personOneTax = taxAmount * personOneSubTotal;
+        double personTwoTax = taxAmount * personTwoSubTotal;
+        double personThreeTax = taxAmount * personThreeSubTotal;
+        double personFourTax = taxAmount * personFourSubTotal;
 
-        double personOneTipAmount = ( tipPercent / 100 ) * personOneSubTotal;
-        double personTwoTipAmount = ( tipPercent / 100 ) * personTwoSubTotal;
-        double personThreeTipAmount = ( tipPercent / 100 ) * personThreeSubTotal;
-        double personFourTipAmount = ( tipPercent / 100 ) * personFourSubTotal;
+        double mealSubTotal = personOneSubTotal + personTwoSubTotal
+                + personThreeSubTotal + personFourSubTotal;
 
-        double personOneTotal = personOneSubTotal + personOneTipAmount + personOneTaxAmount;
-        double personTwoTotal = personTwoSubTotal + personTwoTipAmount + personTwoTaxAmount;
-        double personThreeTotal = personThreeSubTotal + personThreeTipAmount + personThreeTaxAmount;
-        double personFourTotal = personFourSubTotal + personFourTipAmount + personFourTaxAmount;
+        double mealTax = mealSubTotal * taxAmount;
+        double mealTip = (tipPercent / 100) * mealSubTotal;
 
-        double entireMealSubTotal = personOneSubTotal + personTwoSubTotal + personThreeSubTotal + personFourSubTotal;
-        double entireMealTaxAmount = ( taxPercent / 100 ) + entireMealSubTotal;
-        double entireMealTipAmount = ( tipPercent / 100 ) + entireMealSubTotal;
-        double entireMealAfterTaxAndTip = entireMealSubTotal + entireMealTaxAmount + entireMealTipAmount;
-        double entireMealSplitEvenly = entireMealAfterTaxAndTip / numberOfPersons;
+        double mealTotal = mealSubTotal + mealTax + mealTip;
 
-        System.out.println("Total cost of the meal");
-        System.out.println(entireMealAfterTaxAndTip);
-        System.out.println("Amount each person pays if split evenly");
-        System.out.println(entireMealSplitEvenly);
+        double evenCostPerPerson = mealTotal / numberOfPersons;
+
+        double personOneTip = (tipPercent / 100) * personOneSubTotal;
+        double personTwoTip = (tipPercent / 100) * personTwoSubTotal;
+        double personThreeTip = (tipPercent / 100) * personThreeSubTotal;
+        double personFourTip = (tipPercent / 100) * personFourSubTotal;
+
+        double personOneTotal = personOneSubTotal + personOneTip + personOneTax;
+        double personTwoTotal = personTwoSubTotal + personTwoTip + personTwoTax;
+        double personThreeTotal = personThreeSubTotal + personThreeTip + personThreeTax;
+        double personFourTotal = personFourSubTotal + personFourTip + personFourTax;
+
+        System.out.printf("Total cost of meal: $%.2f\n", mealTotal);
+        System.out.printf("Amount each person pays if split evenly in %d is $%.2f\n", numberOfPersons, evenCostPerPerson);
         System.out.println("If not split evenly:");
-        System.out.println("Adeline");
-        System.out.println(personOneTotal);
-        System.out.println("Brixton");
-        System.out.println(personTwoTotal);
-        System.out.println("Cora");
-        System.out.println(personThreeTotal);
-        System.out.println("Dean");
-        System.out.println(personFourTotal);
+        System.out.printf("%s's meal costs: $%.2f\n", personOneName, personOneTotal);
+        System.out.printf("%s's meal costs: $%.2f\n", personTwoName, personTwoTotal);
+        System.out.printf("%s's meal costs: $%.2f\n", personThreeName, personThreeTotal);
+        System.out.printf("%s's meal costs: $%.2f\n", personFourName, personFourTotal);
+
     }
 }
