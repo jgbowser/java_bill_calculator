@@ -52,5 +52,45 @@ public class Calculator {
 
         boolean serviceWasGood = true;
         boolean splitBillEvenly = true;
+
+        double personOneSubTotal = personOneAppetizerCost + personOneMainCost + personOneDessertCost + personOneDrinkCost;
+        double personTwoSubTotal = personTwoAppetizerCost + personTwoMainCost + personTwoDessertCost + personTwoDrinkCost;
+        double personThreeSubTotal = personThreeAppetizerCost + personThreeMainCost + personThreeDessertCost + personThreeDrinkCost;
+        double personFourSubTotal = personFourAppetizerCost + personFourMainCost + personFourDessertCost + personFourDrinkCost;
+
+        double personOneTaxAmount = ( taxPercent / 100 ) * personOneSubTotal;
+        double personTwoTaxAmount = ( taxPercent / 100 ) * personTwoSubTotal;
+        double personThreeTaxAmount = ( taxPercent / 100 ) * personThreeSubTotal;
+        double personFourTaxAmount = ( taxPercent / 100 ) * personFourSubTotal;
+
+        double personOneTipAmount = ( tipPercent / 100 ) * personOneSubTotal;
+        double personTwoTipAmount = ( tipPercent / 100 ) * personTwoSubTotal;
+        double personThreeTipAmount = ( tipPercent / 100 ) * personThreeSubTotal;
+        double personFourTipAmount = ( tipPercent / 100 ) * personFourSubTotal;
+
+        double personOneTotal = personOneSubTotal + personOneTipAmount + personOneTaxAmount;
+        double personTwoTotal = personTwoSubTotal + personTwoTipAmount + personTwoTaxAmount;
+        double personThreeTotal = personThreeSubTotal + personThreeTipAmount + personThreeTaxAmount;
+        double personFourTotal = personFourSubTotal + personFourTipAmount + personFourTaxAmount;
+
+        double entireMealSubTotal = personOneSubTotal + personTwoSubTotal + personThreeSubTotal + personFourSubTotal;
+        double entireMealTaxAmount = ( taxPercent / 100 ) + entireMealSubTotal;
+        double entireMealTipAmount = ( tipPercent / 100 ) + entireMealSubTotal;
+        double entireMealAfterTaxAndTip = entireMealSubTotal + entireMealTaxAmount + entireMealTipAmount;
+        double entireMealSplitEvenly = entireMealAfterTaxAndTip / numberOfPersons;
+
+        System.out.println("Total cost of the meal");
+        System.out.println(entireMealAfterTaxAndTip);
+        System.out.println("Amount each person pays if split evenly");
+        System.out.println(entireMealSplitEvenly);
+        System.out.println("If not split evenly:");
+        System.out.println("Adeline");
+        System.out.println(personOneTotal);
+        System.out.println("Brixton");
+        System.out.println(personTwoTotal);
+        System.out.println("Cora");
+        System.out.println(personThreeTotal);
+        System.out.println("Dean");
+        System.out.println(personFourTotal);
     }
 }
